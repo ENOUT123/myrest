@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>关于你的故事</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            pink: {
+              light: '#FFE6F2',
+              DEFAULT: '#FF85C0',
+              dark: '#FF4D94',
+            },
+          },
+          fontFamily: {
+            cute: ['"Comic Sans MS"', '"Bubblegum Sans"', 'cursive'],
+          },
+        },
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .text-shadow-pink {
+        text-shadow: 0 2px 4px rgba(255, 77, 148, 0.3);
+      }
+      .frame-common {
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(255, 77, 148, 0.2);
+        border: 5px solid #FF85C0;
+      }
+      .photo-frame { @extend.frame-common; }
+      .video-frame {
+        @extend.frame-common;
+        border-width: 4px;
+        border-radius: 10px;
+      }
+      .carousel-item {
+        display: none;
+        transition: opacity 0.5s ease;
+      }
+      .carousel-item.active {
+        display: block;
+        opacity: 1;
+      }
+      .friend-card {
+        background: rgba(255, 230, 242, 0.8);
+        border: 2px dashed #FF85C0;
+      }
+      .floating-heart {
+        position: absolute;
+        color: #FF4D94;
+        opacity: 0.5;
+        animation: float 6s ease-in-out infinite;
+        pointer-events: none;
+        will-change: transform;
+      }
+      .corner-decor {
+        position: fixed;
+        z-index: 5;
+        opacity: 0.4;
+      }
+      @keyframes float {
+        0% { transform: translateY(0) rotate(0deg); opacity: 0.5; }
+        50% { transform: translateY(-30px) rotate(15deg); opacity: 0.8; }
+        100% { transform: translateY(0) rotate(0deg); opacity: 0.5; }
+      }
+    }
+  </style>
+</head>
+<body class="bg-pink-light font-cute text-gray-800 min-h-screen relative overflow-x-hidden">
+  <!-- 精简装饰元素 -->
+  <div class="corner-decor top-0 left-0 text-6xl transform -rotate-12">♥</div>
+  <div class="corner-decor top-0 right-0 text-5xl transform rotate-12">★</div>
+  <div class="corner-decor bottom-0 left-0 text-5xl transform -rotate-12">☆</div>
+  <div class="corner-decor bottom-0 right-0 text-6xl transform rotate-12">♡</div>
+
+  <!-- 头部 -->
+  <header class="py-6 px-5 text-center relative">
+    <div class="floating-heart top-2 left-1/4 text-lg" style="animation-delay: 0s;">♥</div>
+    <h1 class="text-[clamp(2rem,5vw,3rem)] font-bold text-pink-dark text-shadow-pink">🎀 FXJ的专属世界 🎀</h1>
+    <p class="mt-2 text-pink">关于你的故事 · 歌声与日常</p >
+  </header>
+
+  <!-- 朋友介绍区域 -->
+  <section class="px-5 py-6 max-w-md mx-auto relative">
+    <div class="friend-card rounded-2xl p-6 shadow-md">
+      <h2 class="text-xl font-bold text-pink-dark mb-3 flex items-center">★ 关于TA</h2>
+      <div class="space-y-2 text-gray-700">
+        <p><span class="text-pink-dark font-medium">TA是：</span> 一个把温柔藏在细节里的人，清唱时的声音像裹了糖，镜头里的每个瞬间都透着鲜活的可爱。打游戏时，她更是闪耀全场，拿西施时能以精妙的拉扯和精准的控场掌控局势，用妲己时一套技能秒人干净利落，玩瑶也能贴心守护队友。</p >
+        <p><span class="text-pink-dark font-medium">TA的小特点：</span> 喜欢粉色的软萌感，认真时会皱起小眉头，放松时又像只软乎乎的小猫~</p >
+        <p><span class="text-pink-dark font-medium">TA的日常：</span> 会在展览里认真看图表，会在操场接住夕阳，会在花园和玫瑰合影，也会在商场的花海里当「春日小精灵」~</p >
+      </div>
+    </div>
+  </section>
+
+  <!-- 歌曲区域 -->
+  <section class="px-5 py-8 max-w-md mx-auto relative">
+    <div class="bg-white rounded-2xl p-6 shadow-lg border border-pink/20">
+      <h2 class="text-xl font-bold text-pink-dark mb-4 flex items-center">♪ 你的歌声</h2>
+      <div class="space-y-4">
+        <div class="p-3 bg-pink-light rounded-lg border border-pink/30 relative">
+          <div class="absolute top-2 right-2 text-pink">♪</div>
+          <p class="font-medium">歌曲1：《不为谁而作的歌》</p >
+          <audio controls preload="none" class="w-full mt-2">
+            <source src="images/1.mp3" type="audio/mpeg">
+            你的浏览器不支持音频播放
+          </audio>
+        </div>
+        <div class="p-3 bg-pink-light rounded-lg border border-pink/30 relative">
+          <div class="absolute top-2 right-2 text-pink">🎧</div>
+          <p class="font-medium">歌曲2：《我有一个道姑朋友》</p >
+          <audio controls preload="none" class="w-full mt-2">
+            <source src="images/2.mp3" type="audio/mpeg">
+            你的浏览器不支持音频播放
+           </audio>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 视频区域 -->
+  <section class="px-5 py-8 max-w-md mx-auto relative">
+    <div class="bg-white rounded-2xl p-6 shadow-lg border border-pink/20">
+      <h2 class="text-xl font-bold text-pink-dark mb-4 flex items-center">🎬 你的王者时刻</h2>
+      <div class="space-y-6">
+        <div>
+          <div class="video-frame overflow-hidden">
+            <video controls preload="none" class="w-full h-auto object-contain" poster="images/b1.jpg">
+              <source src="video/v1.mp4" type="video/mp4">
+              你的浏览器不支持视频播放
+            </video>
+          </div>
+          <p class="mt-3 text-gray-700 flex items-center">♥ "貂蝉姐姐附体！金牌中路月下无限连秀翻全场，怒摘三颗星！峡谷法王实至名归，求带飞~" 💎</p >
+        </div>
+        <div>
+          <div class="video-frame overflow-hidden">
+            <video controls preload="none" class="w-full h-auto object-contain" poster="images/b2.jpg">
+              <source src="video/v2.mp4" type="video/mp4">
+              你的浏览器不支持视频播放
+            </video>
+          </div>
+          <p class="mt-3 text-gray-700 flex items-center">♥ "瑶妹附体！顶级游走护C开团样样行，盾厚得像城墙，三颗星轻松到手，峡谷第一辅助非你莫属！" ★</p >
+        </div>
+        <div>
+          <div class="video-frame overflow-hidden">
+            <video controls preload="none" class="w-full h-auto object-contain" poster="images/b3.jpg">
+              <source src="video/v3.mp4" type="video/mp4">
+              你的浏览器不支持视频播放
+            </video>
+          </div>
+          <p class="mt-3 text-gray-700 flex items-center">♥ "哇塞，绝世王者就是牛！草丛女王心控秒杀流，金牌中路支配峡谷！这实力求躺赢！" 🏆</p >
+        </div>
+        <div>
+          <div class="video-frame overflow-hidden">
+            <video controls preload="none" class="w-full h-auto object-contain" poster="images/b4.jpg">
+              <source src="video/v4.mp4" type="video/mp4">
+              你的浏览器不支持视频播放
+            </video>
+          </div>
+          <p class="mt-3 text-gray-700 flex items-center">♥ “峡谷垂钓宗师！西施一技能强制位移神预判，你就是峡谷“拉人狂魔”，快带我飞！🐟”</p >
+        </div>
+    </div>
+  </section>
+
+  <!-- 轮播图+故事区域 -->
+  <section class="px-5 py-8 max-w-md mx-auto relative">
+    <div class="bg-white rounded-2xl p-6 shadow-lg border border-pink/20">
+      <h2 class="text-xl font-bold text-pink-dark mb-4 flex items-center">🖼️ 你的故事</h2>
+      <div class="relative">
+        <div class="carousel-container overflow-hidden rounded-xl">
+          <!-- 照片1 -->
+          <div class="carousel-item active">
+            <div class="photo-frame overflow-hidden">
+              <img src="images/a5.jpg" alt="照片1" width="300" height="200" class="w-full h-auto object-contain" loading="lazy">
+            </div>
+            <p class="mt-4 text-center text-pink-dark">
+              ♡ 这是某个研学日的你——认真看展览的样子，连头发丝都透着专注，像把整个世界都装进了思考里。
+            </p >
+          </div>
+          <!-- 照片2 -->
+          <div class="carousel-item">
+            <div class="photo-frame overflow-hidden">
+              <img src="images/a4.jpg" alt="照片2" width="300" height="200" class="w-full h-auto object-contain" loading="lazy">
+            </div>
+            <p class="mt-4 text-center text-pink-dark">
+              ♡ 操场的夕阳把你裹在温柔里，低头看手机的侧影，像藏着一整个青春的细碎心事，风都跟着慢了下来。
+            </p >
+          </div>
+          <!-- 照片3 -->
+          <div class="carousel-item">
+            <div class="photo-frame overflow-hidden">
+              <img src="images/a2.jpg" alt="照片3" width="300" height="200" class="w-full h-auto object-contain" loading="lazy">
+            </div>
+            <p class="mt-4 text-center text-pink-dark">
+              ♡ 花园里的你像沾了花香的小精灵，连身后的红玫瑰都成了你的背景板。
+            </p >
+          </div>
+          <!-- 照片4 -->
+          <div class="carousel-item">
+            <div class="photo-frame overflow-hidden">
+              <img src="images/a3.jpg" alt="照片4" width="300" height="200" class="w-full h-auto object-contain" loading="lazy">
+            </div>
+            <p class="mt-4 text-center text-pink-dark">
+              ♡ 商场的郁金香丛里，你蹲下来碰花瓣的样子，像把春天都捧在了手心里，连爱心气球都在为你心动。
+            </p >
+          </div>
+          <!-- 照片5 -->
+          <div class="carousel-item">
+            <div class="photo-frame overflow-hidden">
+              <img src="images/a1.jpg" alt="照片5" width="300" height="200" class="w-full h-auto object-contain" loading="lazy">
+            </div>
+            <p class="mt-4 text-center text-pink-dark">
+              ♡ 浴室镜前的随性自拍，乱糟糟的头发反而透着松弛的可爱，连手机壳都和你一样软乎乎的。
+            </p >
+          </div>
+        </div>
+        <!-- 轮播控制按钮 -->
+        <button class="carousel-prev absolute top-1/2 left-2 -translate-y-1/2 bg-white/80 rounded-full w-8 h-8 flex items-center justify-center shadow-md text-pink-dark hover:bg-pink-light transition">←</button>
+        <button class="carousel-next absolute top-1/2 right-2 -translate-y-1/2 bg-white/80 rounded-full w-8 h-8 flex items-center justify-center shadow-md text-pink-dark hover:bg-pink-light transition">→</button>
+        <!-- 指示器 -->
+        <div class="flex justify-center mt-4 gap-2">
+          <span class="carousel-dot w-3 h-3 rounded-full bg-pink-dark"></span>
+          <span class="carousel-dot w-3 h-3 rounded-full bg-pink/40"></span>
+          <span class="carousel-dot w-3 h-3 rounded-full bg-pink/40"></span>
+          <span class="carousel-dot w-3 h-3 rounded-full bg-pink/40"></span>
+          <span class="carousel-dot w-3 h-3 rounded-full bg-pink/40"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 底部 -->
+  <footer class="py-6 text-center text-pink/80 text-sm relative">
+    <div class="floating-heart bottom-4 left-1/3 text-sm" style="animation-delay: 1.5s;">♥</div>
+    <p>送给最可爱的你 ♥</p >
+  </footer>
+
+  <!-- 压缩后的JS脚本 -->
+  <script>
+    // 轮播图核心逻辑
+    const carouselItems=document.querySelectorAll(".carousel-item"),carouselDots=document.querySelectorAll(".carousel-dot"),prevBtn=document.querySelector(".carousel-prev"),nextBtn=document.querySelector(".carousel-next");let currentIndex=0;function showSlide(e){carouselItems[currentIndex].classList.remove("active"),carouselDots[currentIndex].classList.remove("bg-pink-dark"),carouselDots[currentIndex].classList.add("bg-pink/40"),currentIndex=(e+carouselItems.length)%carouselItems.length,carouselItems[currentIndex].classList.add("active"),carouselDots[currentIndex].classList.remove("bg-pink/40"),carouselDots[currentIndex].classList.add("bg-pink-dark")}prevBtn.addEventListener("click",()=>showSlide(currentIndex-1)),nextBtn.addEventListener("click",()=>showSlide(currentIndex+1)),carouselDots.forEach((e,t)=>{e.addEventListener("click",()=>showSlide(t))});let autoPlayInterval=setInterval(()=>showSlide(currentIndex+1),5000);
+    // 延迟生成漂浮爱心
+    setTimeout(()=>{function e(){const t=document.body;for(let e=0;e<2;e++){const o=document.createElement("div"),i=Math.random()*16+8,n=Math.random()*90+5,d=Math.random()*80+10,s=Math.random()*5,r=Math.random()>.5?"♥":"♡";o.className="floating-heart",o.innerText=r,o.style.cssText=`font-size: ${i}px; left: ${n}%; top: ${d}%; animation-delay: ${s}s;`,t.appendChild(o),setTimeout(()=>{o.remove()},6e3)}}e(),setInterval(e,5e3)},2e3);
+  </script>
+</body>
+</html>
